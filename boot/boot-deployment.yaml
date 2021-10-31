@@ -1,0 +1,21 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: boot-deployment
+  labels:
+    app: boot # deployment label  
+spec:
+  replicas: 2
+  selector: 
+    matchLabels:   # select the pods mathcing the label
+      app: boot  
+  template:
+    metadata:
+      labels:
+        app: boot # pod label
+    spec:
+      containers:
+      - name: myboot
+        image: rsaideekshith123/boot:1.0
+        ports:
+        - containerPort: 8080
